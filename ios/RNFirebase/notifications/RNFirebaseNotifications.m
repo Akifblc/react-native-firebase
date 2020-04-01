@@ -208,6 +208,8 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         // notification_displayed
         event = NOTIFICATIONS_NOTIFICATION_DISPLAYED;
     }
+    //Fix show notification foreground for my notification center
+    options = UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound;
 
     [self sendJSEvent:self name:event body:message];
     completionHandler(options);
