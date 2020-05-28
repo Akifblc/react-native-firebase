@@ -51,9 +51,11 @@ RCT_EXPORT_MODULE();
 
 - (void)initialise {
     // If we're on iOS 10 then we need to set this as a delegate for the UNUserNotificationCenter
-    if (@available(iOS 10.0, *)) {
+    
+    //Akif Fix show notification foreground for my notification center
+    /*if (@available(iOS 10.0, *)) {
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
-    }
+    }*/
 
     // Set static instance for use from AppDelegate
     theRNFirebaseNotifications = self;
@@ -208,7 +210,7 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         // notification_displayed
         event = NOTIFICATIONS_NOTIFICATION_DISPLAYED;
     }
-    //Fix show notification foreground for my notification center
+    //Akif Fix show notification foreground for my notification center
     options = UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound;
 
     [self sendJSEvent:self name:event body:message];
